@@ -1,0 +1,39 @@
+#
+# Gmail Auth
+#
+set my_pass = `pass "mutt/ian.liu88@gmail.com"`
+set imap_user = 'ian.liu88@gmail.com'
+set imap_pass = $my_pass
+set smtp_url = 'smtps://ian.liu88@gmail.com@smtp.gmail.com'
+set smtp_pass = $my_pass
+set folder = 'imaps://imap.gmail.com:993/'
+set spoolfile = '+INBOX'
+set postponed = '+[Gmail]/Drafts'
+set ssl_force_tls = yes
+
+set realname = 'Ian Liu Rodrigues'
+set from = 'ian.liu88@gmail.com'
+
+set editor = 'vim'
+set charset = 'utf-8'
+set record = ''
+
+set followup_to = yes
+set text_flowed = yes
+set sort = 'reverse-threads'
+set strict_threads = yes
+set sort_browser = 'reverse-date'
+set sort_aux = 'last-date-received'
+set sleep_time = 0
+set smart_wrap
+
+bind index - collapse-thread
+bind index _ collapse-thread
+
+color index white black '.*'
+color index_author default color234 '.*'
+color index_collapsed default brightblue
+color index_date green default
+color index_label default brightgreen
+color index_number red default
+color index_size cyan default

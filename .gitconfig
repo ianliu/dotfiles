@@ -1,0 +1,19 @@
+[user]
+	name = Ian Liu Rodrigues
+	email = ian.liu88@gmail.com
+[alias]
+	co = checkout
+	st = status -bs
+	lg = log --decorate --graph --oneline
+	out = log @{u}..
+	in = log ..@{u}
+[merge]
+	tool = nvimdiff
+	conflictstyle = diff3
+
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = ian.liu88@gmail.com
+	smtppass = "!pass mutt/ian.liu88@gmail.com"
