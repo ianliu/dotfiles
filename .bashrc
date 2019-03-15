@@ -23,6 +23,7 @@ shopt -s histappend checkwinsize extglob autocd
 
 so /usr/share/git/completion/git-prompt.sh
 so /usr/share/bash-completion/bash_completion
+so /usr/share/git/completion/git-completion.bash
 so ~/.asdf/asdf.sh
 so ~/.asdf/completions/asdf.bash
 
@@ -37,6 +38,8 @@ alias open='xdg-open'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+__git_complete config __git_main
 
 if [ -z "$VIMRUNTIME" ]; then
   alias vim='vim --servername VIM'
