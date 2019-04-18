@@ -21,6 +21,8 @@ shopt -s histappend checkwinsize extglob autocd
 [ -x /usr/bin/lesspipe.sh ] \
   && eval "$(SHELL=/bin/sh /usr/bin/lesspipe.sh)"
 
+so /usr/share/fzf/key-bindings.bash
+so /usr/share/fzf/completion.bash
 so /usr/share/git/completion/git-prompt.sh
 so /usr/share/bash-completion/bash_completion
 so /usr/share/git/completion/git-completion.bash
@@ -34,6 +36,7 @@ myprompt() {
   fi
 }
 
+alias vim=nvim
 alias open='xdg-open'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -41,11 +44,11 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 __git_complete config __git_main
 
-if [ -z "$VIMRUNTIME" ]; then
-  alias vim='vim --servername VIM'
-else
-  alias vim="vim --servername $VIM_SERVERNAME --remote"
-fi
+# if [ -z "$VIMRUNTIME" ]; then
+#   alias vim='vim --servername VIM'
+# else
+#   alias vim="vim --servername $VIM_SERVERNAME --remote"
+# fi
 
 if [ -f /usr/share/git/completion/git-prompt.sh ]; then
   PROMPT_COMMAND=myprompt

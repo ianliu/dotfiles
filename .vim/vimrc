@@ -6,34 +6,49 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('editorconfig/editorconfig-vim')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-vinegar')
+call minpac#add('tpope/vim-surround')
 call minpac#add('vim-python/python-syntax')
 call minpac#add('Vimjas/vim-python-pep8-indent')
 call minpac#add('w0rp/ale')
 call minpac#add('jpalardy/vim-slime')
 call minpac#add('pangloss/vim-javascript')
-call minpac#add('mxw/vim-jsx')
+call minpac#add('pangloss/vim-javascript')
+call minpac#add('MaxMEllon/vim-jsx-pretty')
+call minpac#add('jparise/vim-graphql')
+call minpac#add('junegunn/fzf.vim')
 
-" let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 1
 let g:slime_target = "vimterminal"
 let g:slime_python_ipython = 1
+let g:javascript_plugin_flow = 1
 
 set hid hls is sc ru wmnu ls=2 bg=dark cino=N-s
 set backupcopy=yes
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set completeopt=menu,menuone,preview,noselect,noinsert
 filetype plugin indent on
 syntax on
 
 tnoremap <C-^> <C-W>:b #<CR>
 
 if $TERM =~# '.*-256color'
-	call minpac#add('morhetz/gruvbox')
-	let g:gruvbox_italic = 1
-	set tgc
-	set t_8f=[38;2;%lu;%lu;%lum
-	set t_8b=[48;2;%lu;%lu;%lum
-	colorscheme gruvbox
-	hi! Normal ctermbg=NONE guibg=NONE
-	hi! NonText ctermbg=NONE guibg=NONE
+  call minpac#add('morhetz/gruvbox')
+  let g:gruvbox_italic = 1
+  set tgc
+  set t_8f=[38;2;%lu;%lu;%lum
+  set t_8b=[48;2;%lu;%lu;%lum
+  colorscheme gruvbox
+  hi! Normal ctermbg=NONE guibg=NONE
+  hi! NonText ctermbg=NONE guibg=NONE
+  let g:terminal_ansi_colors = [
+        \ '#646464', '#F58E8E', '#A9D3AB', '#FED37E',
+        \ '#7AABD4', '#D6ADD5', '#79D4D5', '#D4D4D4',
+        \ '#646464', '#F58E8E', '#A9D3AB', '#FED37E',
+        \ '#7AABD4', '#D6ADD5', '#79D4D5', '#D4D4D4',
+        \ ]
+  hi Terminal guibg=#2D2D2D
 endif
 
 autocmd BufRead,BufNewFile Cargo.toml if &filetype == "" | set filetype=cfg | endif
+autocmd BufRead,BufNewFile .flowconfig if &filetype == "" | set filetype=cfg | endif
 autocmd FileType yaml set sw=2 et sta
