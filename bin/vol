@@ -1,0 +1,6 @@
+#!/bin/sh
+case "$1" in
+	toggle) amixer sset Master toggle ;;
+	inc) amixer sset Master 5%+ ;;
+	dec) amixer sset Master 5%- ;;
+esac

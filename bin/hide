@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+	id=$(xdotool getwindowfocus)
+	echo $id >> /tmp/winstack
+	xdotool windowunmap "$id"
+elif [ "$1" = pop ]; then
+	id=$(tail -n1 /tmp/winstack)
+	if [ "$id" != "" ]; then
+		sed -i '$ d' /tmp/winstack
+		xdotool windowmap "$id"
+	fi
+else
+	id=$(xdotool getwindowfocus)
+	xdotool windowunmap "$id"
+	$("$@")
+	xdotool windowmap "$id"
+fi

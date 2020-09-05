@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Keep reading two lines at a time, printing them swapped
+swap() {
+	while read fst; do
+		read snd
+		echo "$snd"
+		echo "$fst"
+	done
+}
+
+sink=$(pactl list sinks \
+	| grep '^Sink\|Description' \
+	| sed 's/^Sink #\(.*\)$/\1/; s/^\s*Description: //' \
+	| swap \
+	| dmenu -l 5 -kv)
+
+pacmd set-default-sink "$sink"
+pactl list short sink-inputs \
+	| cut -f1 \
+	| xargs -ISI pactl move-sink-input SI "$sink"
+
