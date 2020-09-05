@@ -4,7 +4,7 @@
 [alias]
 	co = checkout
 	st = status -bs
-	lg = log --decorate --graph --oneline
+	lg = log --decorate --graph --oneline -10
 	out = log @{u}..
 	in = log ..@{u}
 [merge]
