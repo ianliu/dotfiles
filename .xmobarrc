@@ -1,0 +1,49 @@
+Config { font = "xft:Bitstream Vera Sans Mono:size=10:bold:antialias=true"
+       , alpha = 200
+       , borderColor = "black"
+       , bgColor = "#0c0c0d"
+       , fgColor = "gray"
+       , position = TopSize L 100 24
+       , commands = [ Run StdinReader
+                    , Run Date
+                        "<action=`zenity --calendar` button=1>\
+                        \%H:%M <fc=#0a81f5><fn=2></fn></fc>\
+                        \ %_d %A %B %Y</action>"
+                        "date"
+                        300
+                    , Run Network "ppp0"
+                        ["-x", "", "-t", "cnpem <fc=#ff6666>∴</fc><tx> <fc=#6666ff>∵</fc><rx> | "] 100
+                    , Run Kbd []
+                    , Run DiskU [("/", "<freep>% (<free>)")] [] 600
+                    , Run Alsa "default" "Master"
+                        [ "-t", "<status> <volume>%", "--"
+                        , "--onc", "yellow"
+                        , "--offc", "white"
+                        , "-c", "white"
+                        , "--on", "<fn=3></fn>"
+                        , "--off", "<fn=3></fn>"
+                        ]
+                    ]
+       , sepChar = "%"
+       , alignSep = "{}"
+       , template = "%StdinReader%{%date%}\
+                    \<fn=2></fn> %kbd% | \
+                    \<fn=2></fn> %disku% | \
+                    \%ppp0%\
+                    \<action=`vol toggle` button=1>\
+                    \<action=`vol inc` button=4>\
+                    \<action=`vol dec` button=5>\
+                    \%alsa:default:Master%\
+                    \</action>\
+                    \</action>\
+                    \</action> | \
+                    \<action=`desliga` button=1><fc=#ff0000><fn=1>⏻</fn></fc></action> "
+       , additionalFonts =
+           [ "xft:Noto Sans Symbols2:size=11:bold:antialias=true"
+           , "xft:Font Awesome 5 Free:size=11:antialias=true"
+           , "xft:Font Awesome 5 Free Solid:size=11:antialias=true"
+           ]
+       , textOffsets = [ 17, 16, 16 ]
+       }
+
+-- vim: set ft=haskell sw=4 et sta:
