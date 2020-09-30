@@ -48,10 +48,8 @@ alias open='xdg-open'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
-alias scipion="$HOME/bin/scipion3/scipion3"
 alias tree='tree -C'
 alias xclip='xclip -sel clip'
-export SCIPION_HOME=$HOME/bin/scipion3
 
 hide_cmds=(feh mpv zathura)
 for cmd in ${hide_cmds[@]}; do

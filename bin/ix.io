@@ -1,2 +1,2 @@
-#/bin/sh
-curl -F 'f:1=<-' ix.io
+#!/bin/sh
+curl -sF 'f:1=<-' ix.io
