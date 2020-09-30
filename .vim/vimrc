@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'ElmCast/elm-vim'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
@@ -40,4 +41,13 @@ function HaskellIde()
   vert call term_start(['ghcid', '-T', 'main', fn], opts)
   call term_start(['ghci', fn], opts)
   exe nr . "wincmd w"
+endfunction
+
+function HtmlIde()
+  let nr = winnr()
+  let opts = { 'term_kill': 'term' }
+  vert call term_start(['python', '-m', 'http.server'], opts)
+  !qutebrowser --basedir /tmp/htmlide-vim http://localhost:8000 &
+  exe nr . "wincmd w"
+  nmap <leader>r :!qutebrowser --basedir /tmp/htmlide-vim :reload<CR>
 endfunction
