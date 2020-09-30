@@ -13,13 +13,17 @@ lxpolkit &
 dbus-update-activation-environment \
 	--systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
+#setxkbmap \
+#	-layout us,us \
+#	-variant ,intl \
+#	-option grp:menu_toggle \
+#	-option altwin:swap_alt_win \
+#	-option caps:ctrl_modifier
+
 setxkbmap \
 	-layout us,us \
 	-variant ,intl \
-	-option grp:menu_toggle \
-	-option altwin:swap_alt_win \
-	-option ctrl:lctrl_meta \
-	-option caps:ctrl_modifier
+	-option grp:menu_toggle
 
 #~/.fehbg
 nitrogen --set-auto --random ~/img/wallpapers/
@@ -28,6 +32,7 @@ xrdb ~/.Xresources
 kbdd
 
 picom &
+tray
 
 # exec i3
 #exec dbus-launch --exit-with-session bspwm

@@ -3,7 +3,8 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=10:bold:antialias=true"
        , borderColor = "black"
        , bgColor = "#0c0c0d"
        , fgColor = "gray"
-       , position = TopSize L 100 24
+       --, position = TopSize L 100 24
+       , position = Static { xpos = 10, ypos = 10, width = 1900, height = 24 }
        , commands = [ Run StdinReader
                     , Run Date
                         "<action=`zenity --calendar` button=1>\
