@@ -1,10 +1,10 @@
 Config { font = "xft:Bitstream Vera Sans Mono:size=10:bold:antialias=true"
-       , alpha = 200
+       , alpha = 100
        , borderColor = "black"
        , bgColor = "#0c0c0d"
        , fgColor = "gray"
-       --, position = TopSize L 100 24
-       , position = Static { xpos = 10, ypos = 10, width = 1900, height = 24 }
+       , position = TopSize L 100 24
+       --, position = Static { xpos = 10, ypos = 10, width = 1900, height = 24 }
        , commands = [ Run StdinReader
                     , Run Date
                         "<action=`zenity --calendar` button=1>\
@@ -38,7 +38,7 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=10:bold:antialias=true"
                     \</action>\
                     \</action>\
                     \</action> | \
-                    \<action=`desliga` button=1><fc=#ff0000><fn=1>⏻</fn></fc></action> "
+                    \<action=`systemctl suspend` button=1><fc=#ff0000><fn=1>⏻</fn></fc></action> "
        , additionalFonts =
            [ "xft:Noto Sans Symbols2:size=11:bold:antialias=true"
            , "xft:Font Awesome 5 Free:size=11:antialias=true"
