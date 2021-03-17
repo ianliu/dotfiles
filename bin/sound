@@ -7,14 +7,23 @@ list-sinks() {
 }
 
 sinks=()
-idx=$(list-sinks | while read id; do
-	read desc
-	sinks+=($id)
-	echo "$desc"
-done | rofi -dmenu -format i)
-sink=${sinks[$idx]}
+descs=()
+issink=true
+while read line; do
+	if $issink; then
+		sinks+=("$line")
+		issink=false
+	else
+		descs+=("$line")
+		issink=true
+	fi
+done < <(list-sinks)
 
-pacmd set-default-sink "$sink"
-pactl list short sink-inputs \
-	| cut -f1 \
-	| xargs -ISI pactl move-sink-input SI "$sink"
+idx=$(printf "%s\n" "${descs[@]}" | rofi -dmenu -format i)
+if [[ -n $idx ]]; then
+	sink=${sinks[$idx]}
+	pacmd set-default-sink "$sink"
+	pactl list short sink-inputs \
+		| cut -f1 \
+		| xargs -ISI pactl move-sink-input SI "$sink"
+fi
