@@ -47,8 +47,8 @@ tnoremap <Esc> <C-\><C-n>
 cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
-cnoremap <M-B> <S-Left>
-cnoremap <M-F> <S-Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
 
 set hidden
 set noshowmode
