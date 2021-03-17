@@ -1,2 +1,2 @@
 #!/bin/bash
-import png:- | xclip -sel clip -t image/png
+maim -s | xclip -selection clipboard -t image/png
