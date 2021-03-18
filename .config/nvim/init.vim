@@ -36,25 +36,25 @@ let g:lightline = {
 " Highlight lua heredocs in .vim files
 let g:vimsyn_embed = 'lPr'
 
+" Open terminal at the bottom
+let g:neoterm_default_mod = 'botright'
+let g:neoterm_autoinsert = 1
+
 " Leader of the pack!!!
 let mapleader = " "
 nnoremap <Leader><Space> :Files<CR>
 nnoremap <Leader>bb :Buffers<CR>
 nnoremap <Leader>bk <C-^>:bw #<CR>
 nnoremap <Leader>s :Rg<Space>
-nnoremap <Leader>t :T<CR>
+nnoremap <Leader>t :Ttoggle resize=10<CR>
 nnoremap <Leader>n :set nu! rnu!<CR>
 
 " Auto-closing brackets
 inoremap {<CR> {<CR>}<Esc>O
 
 " Better terminal mappings
-tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <cmd>Ttoggle<CR>
 tnoremap <C-w><C-w> <cmd>wincmd p<cr>
-augroup terminal
-    au!
-    au TermOpen,BufEnter term://* startinsert
-augroup END
 
 " Better cmdline movement
 cnoremap <C-A> <Home>
@@ -112,5 +112,4 @@ require('compe').setup({
         vsnip = true;
     };
 })
-
 EOF
